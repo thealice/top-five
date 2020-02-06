@@ -5,14 +5,22 @@ class UsersController < ApplicationController
   #   erb :"/users/index.html"
   # end
 
-  # GET: /users/new
+  # GET: /signup - Load Signup form
   get "/signup" do
     erb :"/users/create_user.html"
   end
 
-  # POST: /users
-  post "/users" do
-    redirect "/users"
+  # POST: /signup - Create User
+  post "/signup" do
+    @username_exists = params[:username] if username_exists?(params[:username])
+    @user = User.new(params) if !@username_exists
+    if @user && @user.save
+      session[:user_id] = user.id
+      redirect to '/lists'
+    else
+      erb :"/users/create_user.html"
+      # redirect to '/signup'
+    end
   end
 
   # GET: /users/5
@@ -34,4 +42,23 @@ class UsersController < ApplicationController
   delete "/users/:id/delete" do
     redirect "/users"
   end
+
+  helpers do
+
+    def username_exists?(username)
+      !!User.find_by(:username => username)
+    end
+
+    def login(username, password)
+      user = User.find_by(:username => username) 
+ 
+      if user && user.authenticate(password)
+        session[:user_id] = user.id
+      else
+        redirect "/login"
+      end
+    end
+
+  end
+
 end
