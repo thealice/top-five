@@ -1,4 +1,4 @@
-class CreateListItems < ActiveRecord::Migration
+class CreateListItems < ActiveRecord::Migration[5.2]
   def change
     create_table :list_items do |t|
       t.integer :rank
