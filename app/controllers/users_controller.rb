@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
 
   # GET: /users
-  # get "/users" do
-  #   erb :"/users/index.html"
-  # end
+  get "/users" do
+    erb :"/users/index.html"
+  end
 
   # GET: /signup - Load Signup form
   get "/signup" do
-    erb :"/users/create_user.html"
+    if !logged_in?
+      erb :"/users/create_user.html" 
+    else 
+      redirect to '/'
+    end
   end
 
   # POST: /signup - Create User
@@ -15,50 +19,57 @@ class UsersController < ApplicationController
     @username_exists = params[:username] if username_exists?(params[:username])
     @user = User.new(params) if !@username_exists
     if @user && @user.save
-      session[:user_id] = user.id
+      session[:username] = user.username
       redirect to '/lists'
     else
-      erb :"/users/create_user.html"
-      # redirect to '/signup'
+      erb :"/users/create_user.html" # do this rather than redirect to '/signup' to get errors to display
     end
   end
 
-  # GET: /users/5
+  # GET: /login - Load Login form
+  get "/login" do
+    if !logged_in?
+      erb :"/users/login.html"
+    else
+      redirect to '/'
+    end
+  end
+
+  # POST: /login - Log User In
+  post "/login" do
+    login(params[:username], params[:password])
+    redirect to '/lists'
+  end
+
+  # GET: /logout - Log User Out
+  get '/logout' do
+    if logged_in?
+      logout!
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
+
+  # GET: /users/5 - Display user info and a list of their lists
   get "/users/:id" do
+    @user = User.find_by(params[:id])
     erb :"/users/show.html"
   end
 
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
+  # # GET: /users/5/edit
+  # get "/users/:id/edit" do
+  #   erb :"/users/edit.html"
+  # end
 
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
+  # # PATCH: /users/5
+  # patch "/users/:id" do
+  #   redirect "/users/:id"
+  # end
 
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
-
-  helpers do
-
-    def username_exists?(username)
-      !!User.find_by(:username => username)
-    end
-
-    def login(username, password)
-      user = User.find_by(:username => username) 
- 
-      if user && user.authenticate(password)
-        session[:user_id] = user.id
-      else
-        redirect "/login"
-      end
-    end
-
-  end
+  # # DELETE: /users/5/delete
+  # delete "/users/:id/delete" do
+  #   redirect "/users"
+  # end
 
 end
