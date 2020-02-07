@@ -1,1 +1,23 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create A New List</h1>
+
+<span class="error"><%= "Something went wrong. Make sure your list has a Title!" if @list && @list.errors.any? %></span>
+<form action="/lists" method="POST">
+    <label for="title">List Title: </label>
+        <input type="text" id="title" name="title"><br>
+    <label for="category">List Category: </label>
+        <input type="text" id="category" name="category"><br>
+    <br>
+    <label>1: </label>
+  	    <input type="text" name="[list_items][][content]"><br>
+  	<label>2: </label>
+  	    <input type="text" name="[list_items][][content]"><br>
+  	<label>3: </label>
+  	    <input type="text" name="[list_items][][content]"><br>
+  	<label>4: </label>
+  	    <input type="text" name="[list_items][][content]"><br>
+  	<label>5: </label>
+  	    <input type="text" name="[list_items][][content]"><br>
+  	<br>
+  	<input class="update" type="submit" value="Submit">
+
+</form>
