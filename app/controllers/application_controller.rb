@@ -45,7 +45,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def owns_list?
-      !!(owned_list.user_id == current_user.id)
+      !!(owned_list.user_id == current_user.id) if session[:username]
     end
 
     def login(username, password)
