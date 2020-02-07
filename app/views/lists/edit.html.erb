@@ -1,9 +1,16 @@
-<h1>Insert the form to edit an instance of a list here.</h1>
-Store all list items in controller action. 
+<h1>Edit <em><%= @list.title %></em>:</h1>
 
-    <% @list.list_items.each_with_index do |item| %>
-        <form action="/lists/<%= @list.id %>/list_items/<%= item.id %>/edit" method="POST">
-            <input id="hidden" type="hidden" name="_method" value="PATCH">
-            <input type="text" name=""  
-        </form>
+<form action="/lists/<%= @list.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <label for="title">List Title: </label>
+        <input type="text" id="title" name="title" value="<%= @list.title %>"><br>
+    <label for="category">List Category: </label>
+        <input type="text" id="category" name="category" value="<%= @list.category %>"><br>
+    <br>
+    <% @list_items.each.with_index(1) do |item, index| %>
+        <label><%= index %>: </label>
+        <input type="text" name="[list_items][][content]" value="<%= item.content %>"><br>
     <% end %>
+    <br>
+    <button type="submit">Update</button>
+    </form>

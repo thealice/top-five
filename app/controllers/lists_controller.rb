@@ -18,7 +18,6 @@ class ListsController < ApplicationController
   # POST: /lists
   post "/lists" do
     if logged_in?
-
       @list = List.new(title: params[:title])
       @user = current_user
       if @list && @list.save
@@ -31,7 +30,7 @@ class ListsController < ApplicationController
         end
         @list.save
         @user.lists << @list
-        redirect to "/users/#{current_user.id}"
+        redirect to "/lists/#{@list.id}"
       else
         erb :"/lists/new.html"
       end
@@ -42,13 +41,15 @@ class ListsController < ApplicationController
 
   # GET: /lists/5
   get "/lists/:id" do
+    @list = List.find_by(id: params[:id])
     erb :"/lists/show.html"
   end
 
   # GET: /lists/5/edit - make sure to limit to owner of lists
   get "/lists/:id/edit" do
-    if is_owner?
+    if owns_list?
       @list = List.find_by(id: params[:id])
+      @list_items = @list.list_items
       erb :"/lists/edit.html"
     else
       erb :error
@@ -57,7 +58,21 @@ class ListsController < ApplicationController
 
   # PATCH: /lists/5
   patch "/lists/:id" do
-    redirect "/lists/:id"
+    if owns_list?
+      @list = List.find_by(id: params[:id])
+      #Update Title and/or Category
+      @list.update(title: params[:title], category: params[:category])
+      #Update List Items
+      @items = @list.list_items
+      @items.each_with_index do |item, index|
+        item.update(content: params[:list_items][index]["content"])
+      end
+      #Save Updated List
+      @list.save
+      redirect to "/lists/:id"
+    else
+      redirect to "/error"
+    end
   end
 
   # DELETE: /lists/5/delete

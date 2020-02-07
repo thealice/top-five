@@ -13,6 +13,10 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get "/error" do
+    erb :error
+  end
+
   helpers do
 
     def username_exists?(username)
@@ -34,6 +38,14 @@ class ApplicationController < Sinatra::Base
 
     def is_owner?
       !!(owner == current_user)
+    end
+
+    def owned_list
+      @owned_list ||= List.find_by(:id => params[:id]) if params[:id]
+    end
+
+    def owns_list?
+      !!(owned_list.user_id == current_user.id)
     end
 
     def login(username, password)
