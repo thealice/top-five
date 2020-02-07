@@ -51,9 +51,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/5 - Display user info and a list of their lists
+  # GET: Display user info and a list of their lists
   get "/users/:id" do
-    @user = User.find_by(params[:id])
+    @user = User.find_by(:id => params[:id])
     erb :"/users/show.html"
   end
 
