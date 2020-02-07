@@ -1,4 +1,6 @@
-<h1><%= @user.username %>'s Lists:</h2>
+<h1><%= @user.username %>'s Lists:</h1>
+<p>Figure out if you want to display list content on this page or just link to list show pages</p>
+<p>Add "Edit List" buttons to show only if the lists belong to logged in user</p>
 <ul>
     <% @user.lists.each do |list| %>
         <h2><li><%= list.title %></h3></li></h2>
