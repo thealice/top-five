@@ -57,12 +57,17 @@ class UsersController < ApplicationController
     erb :"/users/show.html"
   end
 
-  # # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   erb :"/users/edit.html"
-  # end
+  # GET: /users/5/edit - Users can only edit their own user page
+  get "/users/:id/edit" do
+    # if params[:id] == current_user.id #make this a helper method, and a find_user helper method for the params[:id]
+    if is_owner?
+      erb :"/users/edit.html"
+    else
+      redirect to '/'
+    end
+  end
 
-  # # PATCH: /users/5
+  # # PATCH: /users/5 - Check that delete action is protected 
   # patch "/users/:id" do
   #   redirect "/users/:id"
   # end

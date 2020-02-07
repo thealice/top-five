@@ -1,3 +1,13 @@
-<h1>This is the show page for an individual User. I'd like it to show the user info and an index of the users lists</h1>
-<h2><%= @user.username %>'s Lists:</h2>
+<h1><%= @user.username %>'s Lists:</h2>
+<ul>
+    <% @user.lists.each do |list| %>
+        <h2><li><%= list.title %></h3></li></h2>
+        <% list.list_items.each do |item| %>
+            <li><%= item.content %></li>
+        <% end %>
+
+    <% end %>
+</ul>
+
+
 
