@@ -3,7 +3,7 @@
 <p>Add "Edit List" buttons to show only if the lists belong to logged in user</p>
 <ul>
     <% @user.lists.each do |list| %>
-        <h2><li><%= list.title %></h3></li></h2>
+        <h2><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h2>
         <% list.list_items.each do |item| %>
             <li><%= item.content %></li>
         <% end %>
