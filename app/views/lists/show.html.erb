@@ -1,4 +1,7 @@
 <h1><%= @list.title %></h1>
+<% if @list.category %>
+<p class="details">category: <%= @list.category %></p> 
+<% end %>
 <ul>
 <% @list.list_items.each.with_index(1) do |item, index| %>
     <li><%= "#{index}. #{item.content}" %></li>
