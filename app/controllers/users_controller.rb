@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit - Users can only edit their own user page
   get "/users/:id/edit" do
-    if is_owner?
+    if is__user_owner?
       erb :"/users/edit.html"
     else
       redirect to '/error'

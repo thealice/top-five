@@ -31,13 +31,13 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(:username => session[:username]) if session[:username]
     end
 
-    def owner
+    def user_owner
       # binding.pry
-      @owner ||= User.find_by(:id => params[:id]) if params[:id]
+      @user_owner ||= User.find_by(:id => params[:id]) if params[:id]
     end
 
-    def is_owner?
-      !!(owner == current_user)
+    def is_user_owner?
+      !!(user_owner == current_user)
     end
 
     def owned_list

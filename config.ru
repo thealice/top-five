@@ -11,4 +11,3 @@ use Rack::MethodOverride
 run ApplicationController
 use ListsController
 use UsersController
-use ListItemsController
