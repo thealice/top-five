@@ -1,13 +1,11 @@
 <h1><%= @user.username %>'s Lists:</h1>
-<p>Figure out if you want to display list content on this page or just link to list show pages</p>
-<p>Add "Edit List" buttons to show only if the lists belong to logged in user</p>
+
 <ul>
     <% @user.lists.each do |list| %>
         <h2><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h2>
         <% list.list_items.each do |item| %>
             <li><%= item.content %></li>
         <% end %>
-
     <% end %>
 </ul>
 
