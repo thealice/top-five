@@ -70,7 +70,7 @@ class ListsController < ApplicationController
       end
       #Save Updated List
       @list.save
-      redirect to "/lists/:id"
+      redirect to "/lists/#{@list.id}"
     else
       redirect to "/error"
     end
@@ -78,6 +78,12 @@ class ListsController < ApplicationController
 
   # DELETE: /lists/5/delete
   delete "/lists/:id/delete" do
-    redirect "/lists"
+    if owns_list?
+      @list = owned_list
+      @list.delete
+      redirect to "/lists"
+    else
+      erb :error
+    end
   end
 end

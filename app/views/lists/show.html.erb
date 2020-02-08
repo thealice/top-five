@@ -1,1 +1,15 @@
-<h1>This is the show page for an individual instance of a list</h1>
+<h1><%= @list.title %></h1>
+<ul>
+<% @list.list_items.each.with_index(1) do |item, index| %>
+    <li><%= "#{index}. #{item.content}" %></li>
+<% end %>
+</ul>
+<% if owns_list? %>
+<button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit this list</a></button>
+<br>
+<h4 class="danger">Danger Zone</h4>
+<form action="/lists/<%=@list.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" class="delete" value="Delete List">
+  </form>
+<% end %>
