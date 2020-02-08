@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    @users = User.all
     erb :"/users/index.html"
   end
 
@@ -59,11 +60,10 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit - Users can only edit their own user page
   get "/users/:id/edit" do
-    # if params[:id] == current_user.id #make this a helper method, and a find_user helper method for the params[:id]
     if is_owner?
       erb :"/users/edit.html"
     else
-      redirect to '/'
+      redirect to '/error'
     end
   end
 
