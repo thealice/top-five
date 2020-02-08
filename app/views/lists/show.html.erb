@@ -8,11 +8,11 @@
 <% end %>
 </ul>
 <% if owns_list? %>
-<button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit this list</a></button>
 <br>
-<h4 class="danger">Danger Zone</h4>
-<form action="/lists/<%=@list.id%>/delete" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" class="delete" value="Delete List">
-  </form>
+<label for="edit">Edit this list:</label>
+<button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
+<br>
+<br>
+<a href="/users/<%= owned_list.user_id %>" class="back">Back to my lists</a>
 <% end %>
+<br>

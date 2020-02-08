@@ -13,4 +13,13 @@
     <% end %>
     <br>
     <button type="submit">Update</button>
+    <br>
     </form>
+    <br>
+    <form action="/lists/<%=@list.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <label for="delete">Danger Zone:</label>
+        <input type="submit" class="delete" value="Delete List">
+    </form>
+    <br>
+    <a class="back" href="/users/<%= owned_list.user_id %>">Back to my lists</a>
