@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   # GET: /lists
   get "/lists" do
     @lists = List.all
+    @list_by_updated_desc = @lists.sort_by {|list| list.updated_at}.reverse
     erb :"/lists/index.html"
   end
 
