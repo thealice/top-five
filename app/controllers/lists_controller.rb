@@ -43,7 +43,7 @@ class ListsController < ApplicationController
   # GET: /lists/5
   get "/lists/:id" do
     @list = List.find_by(id: params[:id])
-    erb :"/lists/show.html"
+    erb :"/lists/show.html" 
   end
 
   # GET: /lists/5/edit - make sure to limit to owner of lists

@@ -1,18 +1,25 @@
-<h1><%= @list.title %></h1>
-<% if @list.category %>
-<p class="details">category: <%= @list.category %></p> 
+<% if @list %>
+    <h1><%= @list.title %></h1>
+    <% if @list.category %>
+    <p class="details">category: <%= @list.category %></p> 
+    <% end %>
+    <ul>
+    <% @list.list_items.each.with_index(1) do |item, index| %>
+        <li><%= "#{index}. #{item.content}" %></li>
+    <% end %>
+    </ul>
+    <% if owns_list? %>
+    <br>
+    <label for="edit">Edit this list:</label>
+    <button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
+    <br>
+    <br>
+    <a href="/users/<%= owned_list.user_id %>" class="back">Back to my lists</a>
+    <% end %>
+    <br>
+<% else %>
+    <span class="error">Hm....can't find this list. It may have been deleted.</span><br>
+    <br>
+    <a class="back" href="/lists">Back to all lists</a>
 <% end %>
-<ul>
-<% @list.list_items.each.with_index(1) do |item, index| %>
-    <li><%= "#{index}. #{item.content}" %></li>
-<% end %>
-</ul>
-<% if owns_list? %>
-<br>
-<label for="edit">Edit this list:</label>
-<button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
-<br>
-<br>
-<a href="/users/<%= owned_list.user_id %>" class="back">Back to my lists</a>
-<% end %>
-<br>
+    
