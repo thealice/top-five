@@ -14,10 +14,14 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-  
+    <!-- Begin Wrapper -->
     <div class="wrapper">
-      <div id="header">
+      
+      <!-- Begin Header -->
+      <div id="header"> 
+
         <div class="topnav">
+
           <a href="/">home</a> |
           <% if logged_in? %>
               <a href="/lists/new">add a new list</a> |
@@ -30,14 +34,16 @@
               <a href="/lists">view all lists</a>
           <% end %>
 
-      </div>
-      </div>
+          </div>
+
+        </div><!-- End Header -->
+
         <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020<%= " - #{Time.current.year}" if Time.current.year > 2020 %> <strong>TopFive</strong></small>
       </footer>
-    </div>
+    </div><!-- End Wrapper -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>
