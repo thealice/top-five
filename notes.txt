@@ -1,1 +1,9 @@
 move logic from Views into Controllers when possible
+add seed data for testing
+Add model for Tags?
+Add view for view lists by tag
+Allow more than 5 items in a list?
+test
+benchmark testing?
+figure out design
+add styling
