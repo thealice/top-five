@@ -7,3 +7,9 @@ test
 benchmark testing?
 figure out design
 add styling
+add readme
+add search function
+add more attributes to list items (links, images)?
+deploy to heroku
+
+should we be santitizing form entries? how?

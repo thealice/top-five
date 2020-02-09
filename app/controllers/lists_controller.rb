@@ -65,6 +65,7 @@ class ListsController < ApplicationController
       @list.update(title: params[:title], category: params[:category])
       #Update List Items
       @items = @list.list_items
+      #add check for blank content. if !blank update, if blank delete
       @items.each_with_index do |item, index|
         item.update(content: params[:list_items][index]["content"])
       end
