@@ -21,8 +21,8 @@
           <a href="/">home</a> |
           <% if logged_in? %>
               <a href="/lists/new">add a new list</a> |
-              <a href="/lists">view all lists</a> |
               <a href="/users/<%= current_user.id %>">view my lists</a> |
+              <a href="/lists">view all lists</a> |
               <a href="/logout">logout</a>
           <% else %>
               <a href="/login">login</a> |
