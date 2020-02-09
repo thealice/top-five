@@ -14,8 +14,24 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+  
     <div class="wrapper">
+      <div id="header">
+        <div class="topnav">
+          <a href="/">home</a> |
+          <% if logged_in? %>
+              <a href="/lists/new">add a new list</a> |
+              <a href="/lists">view all lists</a> |
+              <a href="/users/<%= current_user.id %>">view my lists</a> |
+              <a href="/logout">logout</a>
+          <% else %>
+              <a href="/login">login</a> |
+              <a href="/signup">sign up</a> |
+              <a href="/lists">view all lists</a>
+          <% end %>
 
+      </div>
+      </div>
         <%= yield %>
 
       <footer class="branding">
