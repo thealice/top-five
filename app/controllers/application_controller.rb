@@ -48,6 +48,10 @@ class ApplicationController < Sinatra::Base
       !!(owned_list.user_id == current_user.id) if session[:username]
     end
 
+    def list_owner
+      @list_owner ||= User.find_by(id: owned_list.user_id) if owned_list.user_id
+    end
+
     def login(username, password)
       user = User.find_by(:username => username) 
  

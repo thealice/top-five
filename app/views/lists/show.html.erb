@@ -1,8 +1,11 @@
 <% if @list %>
     <h1><%= @list.title %></h1>
-    <% if @list.category %>
-    <p class="details">category: <%= @list.category %></p> 
-    <% end %>
+    <p class="details">
+        authored by: <a href="/users/<%= list_owner.id %>"><%= list_owner.username %></a>
+        <% if @list.category %>
+        <%= "in category: #{@list.category}" %>
+         <% end %>
+        </p>
     <ul>
     <% @list.list_items.each.with_index(1) do |item, index| %>
         <li><%= "#{index}. #{item.content}" %></li>
