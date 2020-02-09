@@ -7,17 +7,11 @@
     <label for="category">List Category: </label>
         <input type="text" id="category" name="category"><br>
     <br>
-    <label>1: </label>
-  	    <input type="text" name="[list_items][][content]"><br>
-  	<label>2: </label>
-  	    <input type="text" name="[list_items][][content]"><br>
-  	<label>3: </label>
-  	    <input type="text" name="[list_items][][content]"><br>
-  	<label>4: </label>
-  	    <input type="text" name="[list_items][][content]"><br>
-  	<label>5: </label>
-  	    <input type="text" name="[list_items][][content]"><br>
-  	<br>
+    <ol class="new-list">
+		  <% 10.times do %>
+			<%= '<li><input type="text" name="[list_items][][content]"></li>' %>
+		  <%end%>
+  	</ol>
   	<button type="submit">Submit</button>
 
 </form>

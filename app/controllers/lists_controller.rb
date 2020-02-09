@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   # GET: /lists/new
   get "/lists/new" do
     if logged_in?
+      @items_list = (10.times { '<li><input type="text" name="[list_items][][content]"></li>' })
       erb :"/lists/new.html"
     else
       redirect to "/login"
@@ -24,7 +25,7 @@ class ListsController < ApplicationController
       if @list && @list.save
         @list.category = params[:category] if params[:category] != ""
         @list.user_id = current_user.id
-        params[:list_items].each_with_index do |item, index|
+        params[:list_items].each.with_index(1) do |item, index|
           if item["content"] != ""
             @list.list_items.create(:content => params["list_items"][index]["content"], :rank => index)
           end

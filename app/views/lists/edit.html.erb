@@ -7,10 +7,11 @@
     <label for="category">List Category: </label>
         <input type="text" id="category" name="category" value="<%= @list.category %>"><br>
     <br>
+    <ol class="edit-list">
     <% @list_items.each.with_index(1) do |item, index| %>
-        <label><%= index %>: </label>
-        <input type="text" name="[list_items][][content]" value="<%= item.content %>"><br>
+        <li><input type="text" name="[list_items][][content]" value="<%= item.content %>"></li>
     <% end %>
+    </ol>
     <br>
     <button type="submit">Update</button>
     <br>

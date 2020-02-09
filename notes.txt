@@ -1,5 +1,4 @@
 move logic from Views into Controllers when possible
-on list edit page - add check for blank content. if !blank update, if blank then delete
 on list edit page - allow for adding new list items, but limited to a total of 10 
 add seed data for testing
 Add model for Tags?

@@ -6,11 +6,11 @@
         <%= "in category: #{@list.category}" %>
          <% end %>
         </p>
-    <ul>
-    <% @list.list_items.each.with_index(1) do |item, index| %>
-        <li><%= "#{index}. #{item.content}" %></li>
+    <ol>
+    <% @list.list_items.each do |item| %>
+        <li><%= item.content  %></li>
     <% end %>
-    </ul>
+    </ol>
     <% if owns_list? %>
     <br>
     <label for="edit">Edit this list:</label>
