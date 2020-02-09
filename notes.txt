@@ -1,0 +1,1 @@
+move logic from Views into Controllers when possible
