@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 
-<span class="error"><%= "Username and password are required fields" if @user && @user.errors.any? %></span>
+<span class="error"><%= "Username and password do not match" if @user && @user.errors.any? %></span>
 
 <form action="/login" method="POST">
 
