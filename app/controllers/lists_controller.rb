@@ -46,7 +46,7 @@ class ListsController < ApplicationController
     erb :"/lists/show.html" 
   end
 
-  # GET: /lists/5/edit - make sure to limit to owner of lists
+  # GET: /lists/5/edit - Limited to owner of lists
   get "/lists/:id/edit" do
     if owns_list?
       @list = List.find_by(id: params[:id])
@@ -65,9 +65,13 @@ class ListsController < ApplicationController
       @list.update(title: params[:title], category: params[:category])
       #Update List Items
       @items = @list.list_items
-      #add check for blank content. if !blank update, if blank delete
+      #Check for blank content. if !blank update, if blank delete
       @items.each_with_index do |item, index|
-        item.update(content: params[:list_items][index]["content"])
+        if params[:list_items][index]["content"] == ""
+          item.delete
+        else
+          item.update(content: params[:list_items][index]["content"])
+        end
       end
       #Save Updated List
       @list.save
