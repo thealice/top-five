@@ -40,7 +40,8 @@ class UsersController < ApplicationController
   # POST: /login - Log User In
   post "/login" do
     login(params[:username], params[:password])
-    redirect to '/lists'
+    redirect to '/'
+    # redirect to "/users/#{current_user.id}"
   end
 
   # GET: /logout - Log User Out
