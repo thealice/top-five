@@ -41,14 +41,13 @@ class ListsController < ApplicationController
     end
   end
 
-  # GET: /lists/5
+  # GET: Show Individual list based on ID
   get "/lists/:id" do
-    
     @list = List.find_by(id: params[:id])
     erb :"/lists/show.html" 
   end
 
-  # GET: /lists/5/edit - Limited to owner of lists
+  # GET: Show form to Edit individual list based on ID - Limited to owner of lists
   get "/lists/:id/edit" do
     if owns_list?
       @list = List.find_by(id: params[:id])
@@ -62,7 +61,7 @@ class ListsController < ApplicationController
     end
   end
 
-  # PATCH: Edits existing list and adds or deletes list items
+  # PATCH: Updates existing list and adds or deletes list items
   patch "/lists/:id" do
     if owns_list? # Check to make sure this list belongs to logged in user
       @list = List.find_by(id: params[:id])
@@ -80,26 +79,24 @@ class ListsController < ApplicationController
       # Save existing list
       @list.save
       
-      # Add new list items, if any (determined by whether they have a rank set yet)
+      # Add new list items IF there are unsaved items in the params
       list_count = @list.list_items.count
       if list_count < 10 && params[:list_items].count > list_count
         params[:list_items].each_with_index do |item, index|
-          if item["content"] != "" && !item["rank"] #Rank isn't the best way to determine whether to create new, or is it?
+          if item["content"] != "" && !item["rank"] 
             @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))
           end
         end
         #Save Updated List with new items, if any
         @list.save
       end
-
-  
       redirect to "/lists/#{@list.id}"
     else
       redirect to "/error"
     end
   end
 
-  # DELETE: /lists/5/delete
+  # DELETE: Delete individual list if it belongs to logged in user
   delete "/lists/:id/delete" do
     if owns_list?
       @list = owned_list
