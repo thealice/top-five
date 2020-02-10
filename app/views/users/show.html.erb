@@ -1,13 +1,17 @@
 <h1><%= @user.username %>'s Lists:</h1>
 
-<ul>
-    <% @user.lists.each do |list| %>
-        <h2><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h2>
-        <% list.list_items.each do |item| %>
-            <li><%= item.content %></li>
+<% if @user.lists.count >= 1 %>
+    <ul>
+        <% @user.lists.each do |list| %>
+            <h2><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h2>
+            <% list.list_items.each do |item| %>
+                <li><%= item.content %></li>
+            <% end %>
         <% end %>
-    <% end %>
-</ul>
+    </ul>
+<% else %>
+    <p>This user doesn't seem to have any lists yet.</p>
+<% end %>
 
 <% if is_user_owner? %>
     <br>
