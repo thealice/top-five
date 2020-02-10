@@ -12,7 +12,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-# gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap'
 
 group :test do
   gem 'rspec'
