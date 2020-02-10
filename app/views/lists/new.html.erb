@@ -4,8 +4,15 @@
 <form action="/lists" method="POST">
     <label for="title">List Title: </label>
         <input type="text" id="title" name="title"><br>
-    <label for="category">List Category: </label>
-        <input type="text" id="category" name="category"><br>
+	<label for="category">List Category: </label>
+	
+		<select id="category" name="category">
+		<% @categories.each do |category| %>
+				<option value="<%= category %>"><%= category %></option>
+				<% end %>
+
+	  </select>
+		</select>
 	<br>
 	<p>You can add up to 10 items in a list. Blank items will not be added. They will be ranked based on the order in which they are added.</p>
     <ol class="new-list">

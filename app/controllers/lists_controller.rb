@@ -10,6 +10,10 @@ class ListsController < ApplicationController
   # GET: /lists/new
   get "/lists/new" do
     if logged_in?
+      @categories = []
+      List.all.each do |list|
+        @categories << list.category if list.category && !@categories.include?(list.category)
+      end
       erb :"/lists/new.html"
     else
       redirect to "/login"
