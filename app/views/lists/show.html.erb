@@ -1,23 +1,24 @@
 <% if @list %>
     <h1><%= @list.title %></h1>
+
     <p class="details">
         authored by: <a href="/users/<%= list_owner.id %>"><%= list_owner.username %></a>
-        <% if @list.category %>
-        <%= "in category: #{@list.category}" %>
-         <% end %>
-        </p>
-    <ol>
-    <% @list.list_items.each do |item| %>
-        <li><%= item.content  %></li>
-    <% end %>
+        <%= "in category: #{@list.category}" if @list.category %>
+    </p>
+
+    <ol class="show-list">
+        <% @list.list_items.each do |item| %>
+            <li><%= item.content  %></li>
+        <% end %>
     </ol>
+
     <% if owns_list? %>
-    <br>
-    <label for="edit">Edit this list:</label>
-    <button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
-    <br>
-    <br>
-    <a href="/users/<%= owned_list.user_id %>" class="back">Back to my lists</a>
+        <br>
+        <label for="edit">Edit this list:</label>
+        <button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
+        <br>
+        <br>
+        <a href="/users/<%= owned_list.user_id %>" class="back">Back to my lists</a>
     <% end %>
     <br>
 <% else %>
@@ -25,4 +26,4 @@
     <br>
     <a class="back" href="/lists">Back to all lists</a>
 <% end %>
-    
+

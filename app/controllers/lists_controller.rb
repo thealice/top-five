@@ -47,6 +47,7 @@ class ListsController < ApplicationController
 
   # GET: Show Individual list based on ID
   get "/lists/:id" do
+
     @list = List.find_by(id: params[:id])
     erb :"/lists/show.html" 
   end
