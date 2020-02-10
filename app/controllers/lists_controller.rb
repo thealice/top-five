@@ -79,6 +79,9 @@ class ListsController < ApplicationController
           item.delete #if blank, delete
         else
           item.update(content: params[:list_items][index]["content"]) #if not blank, update
+          item.update(rank: params[:list_items][index]["rank"])
+          # NOTE: if we add other attributes besides content and rank
+          # we'd want to change the way we do updates (since rank is currently based on index)
         end
       end
       # Save existing list
