@@ -1,6 +1,6 @@
 move logic from Views into Controllers when possible
-on list edit page - allow for adding new list items, but limited to a total of 10 
 add seed data for testing
+Add dropdown for category
 Add model for Tags?
 Add view for view lists by tag
 Allow more than 5 items in a list?

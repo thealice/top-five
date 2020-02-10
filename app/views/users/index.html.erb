@@ -1,11 +1,12 @@
 <% if logged_in? %>
     <h1><%= "List of all users" %> </h1>
+    <ul>
         <% @users_by_username_asc.each do |user| %>
-            <p><a href="/users/<%= user.id %>"><%= user.username %></a></p>
+            <li><a href="/users/<%= user.id %>"><%= user.username %></a></li>
         <% end %>
-
+    </ul>
 <% else %>
-<p>You must be <a href="/login">logged in</a> to see all users</p>
+    <p>You must be <a href="/login">logged in</a> to see all users</p>
 <% end %>
 
 
