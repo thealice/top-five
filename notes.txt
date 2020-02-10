@@ -1,11 +1,14 @@
 move logic from Views into Controllers when possible
-add error messages witih flash
+add error messages with flash
 add error message to new List form (in case user forgets to include a title)
-When editing a list item, if we add attributes to list items then updating content of list item will break thing
+
+Edit - When removing an item from a list the ranks below it need to change by -1
+
+When editing a list item, if we add attributes to list items then updating content of list item will break things
 add new item in new form on same edit page instead.
 
 add seed data for testing
-Edit - When removing an item from a list the ranks below it need to change by -1
+
 Add model for Tags?
 Add view for view lists by tag
 Allow more than 5 items in a list?
