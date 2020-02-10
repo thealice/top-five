@@ -57,6 +57,7 @@ class UsersController < ApplicationController
   # GET: Display user info and a list of their lists
   get "/users/:id" do
     @user = User.find_by(:id => params[:id])
+    @user_lists = @user.lists.sort_by {|list| list.title.downcase }
     erb :"/users/show.html"
   end
 
