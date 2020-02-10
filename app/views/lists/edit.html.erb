@@ -8,9 +8,17 @@
         <input type="text" id="category" name="category" value="<%= @list.category %>"><br>
     <br>
     <ol class="edit-list">
-    <% @list_items.each.with_index(1) do |item, index| %>
-        <li><input type="text" name="[list_items][][content]" value="<%= item.content %>"></li>
-    <% end %>
+        <% @list_items.each.with_index do |item, index| %>
+            <li><input type="text" name="[list_items][][content]" value="<%= item.content %>"></li>
+            <input id="hidden" type="hidden" name="[list_items][][rank]" value="<%= index + 1 %>">
+        <% end %>
+
+        <% if @difference %>  
+            <% @difference.times do %>
+                <li><input type="text" name="[list_items][][content]"></li>
+            <% end %>
+        <% end %>
+    
     </ol>
     <br>
     <button type="submit">Update</button>

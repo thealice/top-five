@@ -24,6 +24,7 @@ class ListsController < ApplicationController
       if @list && @list.save
         @list.category = params[:category] if params[:category] != ""
         @list.user_id = current_user.id
+        # Add new list items
         params[:list_items].each_with_index do |item, index|
           if item["content"] != ""
             @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))
@@ -52,30 +53,46 @@ class ListsController < ApplicationController
     if owns_list?
       @list = List.find_by(id: params[:id])
       @list_items = @list.list_items
+      if @list_items.count < 10
+        @difference = 10 - @list_items.count
+      end
       erb :"/lists/edit.html"
     else
       erb :error
     end
   end
 
-  # PATCH: /lists/5
+  # PATCH: Edits existing list and adds or deletes list items
   patch "/lists/:id" do
-    if owns_list?
+    if owns_list? # Check to make sure this list belongs to logged in user
       @list = List.find_by(id: params[:id])
-      #Update Title and/or Category
+      # Update Title and/or Category
       @list.update(title: params[:title], category: params[:category])
-      #Update List Items
-      @items = @list.list_items
-      #Check for blank content. if !blank update, if blank delete
-      @items.each_with_index do |item, index|
-        if params[:list_items][index]["content"] == ""
-          item.delete
+      # Update Existing List Items
+      existing_items = @list.list_items
+      existing_items.each_with_index do |item, index|  
+        if params[:list_items][index]["content"] == "" #Check for blank content
+          item.delete #if blank, delete
         else
-          item.update(content: params[:list_items][index]["content"])
+          item.update(content: params[:list_items][index]["content"]) #if not blank, update
         end
       end
-      #Save Updated List
+      # Save existing list
       @list.save
+      
+      # Add new list items, if any (determined by whether they have a rank set yet)
+      list_count = @list.list_items.count
+      if list_count < 10 && params[:list_items].count > list_count
+        params[:list_items].each_with_index do |item, index|
+          if item["content"] != "" && !item["rank"] #Rank isn't the best way to determine whether to create new, or is it?
+            @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))
+          end
+        end
+        #Save Updated List with new items, if any
+        @list.save
+      end
+
+  
       redirect to "/lists/#{@list.id}"
     else
       redirect to "/error"
