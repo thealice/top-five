@@ -8,7 +8,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-require ‘dotenv/load’
+require 'dotenv/load'
 
 require 'faker'
 
