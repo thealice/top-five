@@ -1,6 +1,6 @@
 move logic from Views into Controllers when possible
 add seed data for testing
-Add dropdown for category
+Edit - When removing an item from a list the ranks below it need to change by -1
 Add model for Tags?
 Add view for view lists by tag
 Allow more than 5 items in a list?
