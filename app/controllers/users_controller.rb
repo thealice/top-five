@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @username_exists = params[:username] if username_exists?(params[:username])
     @user = User.new(params) if !@username_exists
     if @user && @user.save
-      session[:username] = user.username
+      session[:username] = @user.username
       redirect to '/lists'
     else
       erb :"/users/create_user.html" # do this rather than redirect to '/signup' to get errors to display
