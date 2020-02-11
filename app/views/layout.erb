@@ -17,39 +17,55 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="/stylesheets/main.css" />
 
+    <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans:100,400,700,700i&display=swap" rel="stylesheet">
+
+
   </head>
   <body>
-    <!-- Begin Wrapper -->
-    <div class="wrapper">
-      
-      <!-- Begin Header -->
-      <div id="header"> 
 
-        <div class="topnav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">TopTen</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-          <a href="/">home</a> |
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           <% if logged_in? %>
-              <a href="/lists/new">add a new list</a> |
-              <a href="/users/<%= current_user.id %>">view my lists</a> |
-              <a href="/lists">view all lists</a> |
-              <a href="/users">view all users</a> |
-              <a href="/logout">logout</a>
-          <% else %>
-              <a href="/login">login</a> |
-              <a href="/signup">sign up</a> |
-              <a href="/lists">view all lists</a>
-          <% end %>
-
-          </div>
-
-        </div><!-- End Header -->
+            <li class="nav-item">
+                <a class="nav-link" href="/lists/new">+ new list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/<%= current_user.id %>">+ my lists</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/lists">+ all lists</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users">+ users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">+ logout</a>
+            </li>
+           <% else %>
+              <li class="nav-item"><a class="nav-link" href="/login">login</a></li>
+              <li class="nav-item"><a class="nav-link" href="/signup">sign up</a></li>
+              <li class="nav-item"><a class="nav-link" href="/lists">view all lists</a></li>
+             <% end %>
+         </ul>
+       </div>
+     </nav>
+     
+    <!-- Begin Container -->
+    <div class="container">
 
         <%= yield %>
 
-      <footer class="branding">
-        <small>&copy; 2020<%= " - #{Time.current.year}" if Time.current.year > 2020 %> <strong>TopFive</strong></small>
-      </footer>
-    </div><!-- End Wrapper -->
+        <footer class="branding">
+          <small>&copy; 2020<%= " - #{Time.current.year}" if Time.current.year > 2020 %> <strong>TopFive</strong></small>
+        </footer>
+     </div><!-- End Container -->
   
   <!-- Optional JavaScript -->
 
