@@ -23,6 +23,10 @@ p.details {
   font-style: italic;
 }
 
+footer {
+  margin-top: 1rem;
+}
+
 /*----- Links -----*/
 a {
   color: #ed12a8;
