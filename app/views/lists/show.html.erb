@@ -13,7 +13,6 @@
     </ol>
 
     <% if owns_list? %>
-        <label for="edit">Edit this list:</label>
         <button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
         <br>
         <a href="/users/<%= owned_list.user_id %>" class="back"><--- Back to my lists</a>
