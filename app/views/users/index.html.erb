@@ -1,6 +1,6 @@
 <% if logged_in? %>
     <h1><%= "List of all users" %> </h1>
-    <ul>
+    <ul class="users">
         <% @users_by_username_asc.each do |user| %>
             <li><a href="/users/<%= user.id %>"><%= user.username %></a></li>
         <% end %>

@@ -19,24 +19,77 @@ body {
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
+p.details {
+  font-style: italic;
+}
+
+/*----- Links -----*/
+a {
+  color: #ed12a8;
+}
+
+a.back, a.add, a.bolder {
+  font-weight: 600;
+}
+
+a:hover {
+  color: #740952;
+}
+
+button.edit {
+  margin-left: 6rem;
+}
+
+button.delete {
+  font-size: .5rem;
+}
+/*----- Headers -----*/
 h1, h2, h3, h4, h5, h6 {
   font-family: 'IBM Plex Sans', 'Courier New', Courier, monospace;
 }
 
 h1 {
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 
-.navbar {
-  margin-bottom: 1.3rem;
-  /* font-family: 'IBM Plex Sans', 'Courier New', Courier, monospace; */
+h2 a {
+  font-weight: 400;
 }
 
+/*----- Nav Bar -----*/
+.bg-light {
+  background-color: white!important;
+}
+
+.navbar-brand {
+  font-style: italic;
+  font-weight: bold;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #740952;
+  text-decoration: underline;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  /* color: rgba(0,0,0,.9); */
+  color: black;
+}
+
+/*----- Lists -----*/
 ul.index {
   list-style-type: none;
 }
 
+ul.users li a {
+  font-weight: 500;
+}
+
 ol.user-page {
   margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+ol.show-list {
   margin-left: 1rem;
 }
