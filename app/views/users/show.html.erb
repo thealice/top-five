@@ -1,10 +1,10 @@
 <h1><%= @user.username %>'s Lists:</h1>
 
 <% if @user.lists.count >= 1 %>
-    <ul>
+    <ul class="index">
         <% @user_lists.each do |list| %>
             <h2><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h2>
-            <ol>
+            <ol class="user-page">
                 <% list.list_items.each do |item| %>
                     <li><%= item.content %></li>
                 <% end %>
@@ -16,7 +16,6 @@
 <% end %>
 
 <% if is_user_owner? %>
-    <br>
     <a href="/lists/new">Add a new List</a>
     <% end %>
 
