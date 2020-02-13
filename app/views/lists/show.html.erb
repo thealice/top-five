@@ -13,14 +13,14 @@
     </ol>
 
     <% if owns_list? %>
-        <button class="edit"><a href="/lists/<%= @list.id%>/edit">Edit</a></button>
+        <button class="edit" onclick="window.location.href = '/lists/<%= @list.id%>/edit';">Edit</button>
         <br>
-        <a href="/users/<%= owned_list.user_id %>" class="back"><--- Back to my lists</a>
+        <a href="/users/<%= owned_list.user_id %>" class="back">&lt;-- Back to my lists</a>
     <% end %>
 
 <% else %>
     <span class="error">Hm....can't find this list. It may have been deleted.</span><br>
     <br>
-    <a class="back" href="/lists"><--- Back to all lists</a>
+    <a class="back" href="/lists">&lt;-- Back to all lists</a>
 <% end %>
 
