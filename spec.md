@@ -11,7 +11,7 @@ Specs:
 - [X] Ensure that users can't modify content created by other users
 - [X] Include user input validations (certain fields can't be blank, would like to add stricter password requirements)
 - [X] BONUS - not required - Display validation failures to user with error message (have some messages, would like to add more)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [X] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [X] You have a large number of small Git commits
