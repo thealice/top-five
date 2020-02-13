@@ -16,15 +16,14 @@ To get Top Five running on your local machine for development and testing purpos
 
 ## Built With
 
-* [Ruby](https://www.ruby-lang.org/)
 * [Sinatra](http://sinatrarb.com/) - Web Framework
 * [Bundler](https://bundler.io/) - Dependency Management
 * [ActiveRecord](https://rometools.github.io/rome/) - ORM (Object Relational Mapping) implementation
 
 ## Contributing
 
-Please read and follow our [Code of Conduct](CODE-OF-CONDUCT.md).
-Bug reports and pull requests are very welcome on GitHub at https://github.com/[thealice]/top-five. 
+* Please read and follow our [Code of Conduct](CODE-OF-CONDUCT.md).
+* Bug reports and pull requests are very welcome on GitHub at https://github.com/[thealice]/top-five. 
 
 ## Authors
 
@@ -37,6 +36,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 Thanks to: 
-* [Allison Cortez](https://github.com/allisoncortez) for help with planning motivation
+* [Allison Cortez](https://github.com/allisoncortez) for help with planning and motivation
 * My instructor, [Madeline Stark](https://github.com/Madeline-Stark)
 * and [Ego Trip's Book of Rap Lists](https://www.indiebound.org/book/9780312242985) for inspiration.
