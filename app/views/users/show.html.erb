@@ -12,13 +12,15 @@
                 </ol>
             <% end %>
         </ul>
+    <% elsif is_user_owner? %> 
+        <p>
+            You don't seem to have any lists yet.<br>
+            Why don't you add one?
+         </p>
+        <button class="add" href="/lists/new">+ New List</button>
     <% else %>
         <p>This user doesn't seem to have any lists yet.</p>
     <% end %>
-
-    <% if is_user_owner? %>
-        <button class="add" href="/lists/new">+ New List</button>
-        <% end %>
         
  </div>
 
