@@ -23,7 +23,8 @@ To get Top Five running on your local machine for development and testing purpos
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[thealice]/top-five. Please follow our Code of Conduct.
+Please read and follow our [Code of Conduct](CODE-OF-CONDUCT.md).
+Bug reports and pull requests are very welcome on GitHub at https://github.com/[thealice]/top-five. 
 
 ## Authors
 
