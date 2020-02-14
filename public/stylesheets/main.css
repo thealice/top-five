@@ -49,6 +49,10 @@ button.delete {
   font-size: .5rem;
 }
 
+button.delete:hover {
+  background-color: black;
+}
+
 button {
   background-color: white; 
   color: #ed12a8; 
