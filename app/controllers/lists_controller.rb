@@ -58,7 +58,7 @@ class ListsController < ApplicationController
       @list = List.find_by(id: params[:id])
       @list_items = @list.list_items
       if @list_items.count < 10
-        @difference = 10 - @list_items.count
+        @difference = 5 - @list_items.count
       end
       erb :"/lists/edit.html"
     else
@@ -75,11 +75,12 @@ class ListsController < ApplicationController
       # Update Existing List Items
       existing_items = @list.list_items
       existing_items.each_with_index do |item, index|  
-        if params[:list_items][index]["content"] == "" #Check for blank content
-          item.delete #if blank, delete
+        if params[:list_items][index]["content"] == "" # Check for blank content
+          item.delete # if blank, delete
         else
-          item.update(content: params[:list_items][index]["content"]) #if not blank, update
-          item.update(rank: params[:list_items][index]["rank"])
+          item.update(content: params[:list_items][index]["content"]) # if not blank, update Content
+          item.update(rank: params[:list_items][index]["rank"]) # and Rank
+          
           # NOTE: if we add other attributes besides content and rank
           # we'd want to change the way we do updates (since rank is currently based on index)
         end
@@ -89,7 +90,7 @@ class ListsController < ApplicationController
       
       # Add new list items IF there are unsaved items in the params
       list_count = @list.list_items.count
-      if list_count < 10 && params[:list_items].count > list_count
+      if list_count < 5 && params[:list_items].count > list_count
         params[:list_items].each_with_index do |item, index|
           if item["content"] != "" && !item["rank"] 
             @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))

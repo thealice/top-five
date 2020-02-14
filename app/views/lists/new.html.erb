@@ -13,9 +13,9 @@
 		</select>
 
 	<br>
-	<p>You can add up to 10 items in a list. Blank items will not be added. They will be ranked based on the order in which they are added.</p>
+	<p>You can add up to 5 items in a list. Blank items will not be added. They will be ranked based on the order in which they are added.</p>
     <ol class="new-list">
-		  <% 10.times do %>
+		  <% 5.times do %>
 			<%= '<li><input type="text" name="[list_items][][content]"></li>' %>
 		  <%end%>
   	</ol>
