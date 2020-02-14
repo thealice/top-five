@@ -9,5 +9,6 @@ use Rack::MethodOverride
 
 # Mount controllers
 run ApplicationController
+use CategoriesController
 use ListsController
 use UsersController
