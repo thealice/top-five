@@ -14,6 +14,7 @@ class ListsController < ApplicationController
       List.all.each do |list|
         @categories << list.category if list.category && !@categories.include?(list.category)
       end
+      @categories = @categories.sort
       erb :"/lists/new.html"
     else
       redirect to "/login"
@@ -71,7 +72,8 @@ class ListsController < ApplicationController
     if owns_list? # Check to make sure this list belongs to logged in user
       @list = List.find_by(id: params[:id])
       # Update Title and/or Category
-      @list.update(title: params[:title], category: params[:category])
+      category = params[:category] 
+      @list.update(title: params[:title], category: category)
       # Update Existing List Items
       existing_items = @list.list_items
       existing_items.each_with_index do |item, index|  

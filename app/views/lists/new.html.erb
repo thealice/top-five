@@ -8,7 +8,11 @@
 
 		<select id="category" name="category">
 			<% @categories.each do |category| %>
-				<option value="<%= category %>"><%= category %></option>
+				<% if category == "Uncategorized" %>
+					<option value="<%= category %>" selected ><%= category %></option>
+				<% else %>
+					<option value="<%= category %>"><%= category %></option>
+				<% end %>
 			<% end %>
 		</select>
 
