@@ -1,0 +1,5 @@
+.DS_STORE
+*.rbc
+*.sass-cache
+/Gemfile.lock
+db/seed.rb
