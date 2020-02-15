@@ -61,21 +61,34 @@ class UsersController < ApplicationController
     erb :"/users/show.html"
   end
 
-  # GET: /users/5/edit - Users can only edit their own user page
-  get "/users/:id/edit" do
-    if is__user_owner?
-      erb :"/users/edit.html"
-    else
-      redirect to '/error'
-    end
-  end
-
-  # # PATCH: /users/5 - Check that delete action is protected 
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
+  # # GET: /users/5/edit - Users can only edit their own user page
+  # get "/users/:id/edit" do
+  #   if is_user_owner?
+  #     @user = User.find_by(:id => params[:id])
+  #     erb :"/users/edit.html"
+  #   else
+  #     redirect to '/error'
+  #   end
   # end
 
-  # # DELETE: /users/5/delete
+  # PATCH: /users/5 
+  # patch "/users/:id" do
+  #   if is_user_owner?
+  #     @user = current_user
+  #     if @user.username == params[:username] && @user.authenticate(params[:password])
+  #       @user.update(name: params[:name]) if params[:name] != ""
+  #       @user.update(info: params[:info]) if params[:info] != ""
+  #       redirect to "/users/#{params[:id]}"
+  #     else
+  #       redirect to '/error'
+  #     end
+    
+  #   else
+  #     redirect to "/error"
+  #   end
+  # end
+
+  # # DELETE: /users/5/delete - Check that delete action is protected 
   # delete "/users/:id/delete" do
   #   redirect "/users"
   # end

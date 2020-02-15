@@ -1,2 +1,20 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
-make sure delete and edit buttons are also protected
+<h1>Edit Your Profile</h1>
+<p>Please verify your username and password to edit your other info. You can't currently update your username and password via this form.
+<form action="/users/<%= @user.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+    <label for="username">Username: </label>
+    <input type="text" name="username" value="<%= @user.username %>"><br>
+
+    <label for="password">Password: </label>
+    <input type="password" name="password" id="password" ><br>
+    
+    <label for="name">Name: </label>
+    <input type="text" name="name" value="<%= @user.name if @user.name %>"><br>
+
+    <label for="info">A line or two describing you: </label>
+    <input type="textarea" name="info" value="<%= @user.info if @user.info %>"><br>
+
+    <button type="submit">Update</button>
+
+</form>
