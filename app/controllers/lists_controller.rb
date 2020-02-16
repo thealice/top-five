@@ -23,7 +23,7 @@ class ListsController < ApplicationController
       @list = List.new(title: params[:title])
       @user = current_user
       if @list && @list.save
-        @list.category = params[:category] if params[:category] != ""
+        @list.category = Category.find_by(:name => params[:category]) if params[:category] != "" #last part doesn't apply unless I change this back from a select list
         @list.user_id = current_user.id
         # Add new list items
         params[:list_items].each_with_index do |item, index|
