@@ -1,4 +1,4 @@
-add category index page to menu
+
 add dropdowns for individual categories in navbar?
 allow users to add links to list items and link those items
 move logic from Views into Controllers when possible
