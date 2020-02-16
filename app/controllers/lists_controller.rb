@@ -68,6 +68,7 @@ class ListsController < ApplicationController
   patch "/lists/:id" do
     if owns_list? # Check to make sure this list belongs to logged in user
       @list = List.find_by(id: params[:id])
+      @categories = Category.all.sort_by {|category| category.name.downcase}
       # Update Title and/or Category
       category = Category.find_by(name: params[:category])
       @list.update(title: params[:title], category: category)

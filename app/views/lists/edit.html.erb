@@ -7,9 +7,9 @@
     <label for="category">List Category: </label>
        <select id="category" name="category">
 			<% @categories.each do |category| %>
-				<% if category.id == @list.category.id %>
-					<option value="<%= category.name %>" selected ><%= category.name %></option>
-				<% else %>
+				<% if @list.category && category.id == @list.category.id %>
+                    <option value="<%= category.name %>" selected ><%= category.name %></option>
+                <% else %>
 					<option value="<%= category.name %>"><%= category.name %></option>
 				<% end %>
 			<% end %>
