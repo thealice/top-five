@@ -36,6 +36,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 Thanks to: 
-* [Allison Cortez](https://github.com/allisoncortez) for help with planning and motivation
+* [Allison Cortez](https://github.com/allisoncortez) for help with planning and moral support
 * My instructor, [Madeline Stark](https://github.com/Madeline-Stark)
 * and [Ego Trip's Book of Rap Lists](https://www.indiebound.org/book/9780312242985) for inspiration.
