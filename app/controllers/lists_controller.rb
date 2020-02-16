@@ -60,6 +60,7 @@ class ListsController < ApplicationController
       end
       erb :"/lists/edit.html"
     else
+      @editerror = "You can only edit your own lists"
       erb :error
     end
   end

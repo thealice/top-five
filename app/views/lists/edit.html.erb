@@ -1,40 +1,43 @@
 <h1>Edit <em><%= @list.title %></em>:</h1>
-
-<form action="/lists/<%= @list.id %>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <label for="title">List Title: </label>
-        <input type="text" id="title" name="title" value="<%= @list.title %>"><br>
-    <label for="category">List Category: </label>
-       <select id="category" name="category">
-			<% @categories.each do |category| %>
-				<% if @list.category && category.id == @list.category.id %>
-                    <option value="<%= category.name %>" selected ><%= category.name %></option>
-                <% else %>
-					<option value="<%= category.name %>"><%= category.name %></option>
-				<% end %>
-			<% end %>
-		</select><br>
-    <br>
-    <ol class="edit-list">
-        <% @list_items.each.with_index do |item, index| %>
-            <li><input type="text" name="[list_items][][content]" value="<%= item.content %>"></li>
-            <input id="hidden" type="hidden" name="[list_items][][rank]" value="<%= index + 1 %>">
-        <% end %>
-
-        <% if @difference %>  
-            <% @difference.times do %>
-                <li><input type="text" name="[list_items][][content]"></li>
+<% if owns_list? %>
+    <form action="/lists/<%= @list.id %>" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <label for="title">List Title: </label>
+            <input type="text" id="title" name="title" value="<%= @list.title %>"><br>
+        <label for="category">List Category: </label>
+        <select id="category" name="category">
+                <% @categories.each do |category| %>
+                    <% if @list.category && category.id == @list.category.id %>
+                        <option value="<%= category.name %>" selected ><%= category.name %></option>
+                    <% else %>
+                        <option value="<%= category.name %>"><%= category.name %></option>
+                    <% end %>
+                <% end %>
+            </select><br>
+        <br>
+        <ol class="edit-list">
+            <% @list_items.each.with_index do |item, index| %>
+                <li><input type="text" name="[list_items][][content]" value="<%= item.content %>"></li>
+                <input id="hidden" type="hidden" name="[list_items][][rank]" value="<%= index + 1 %>">
             <% end %>
-        <% end %>
-    
-    </ol>
-    <button class="edit" type="submit">Update</button>
-    </form>
-    <br>
-    <form action="/lists/<%=@list.id%>/delete" method="POST">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <label for="delete">Danger Zone:</label>
-        <button type="submit" class="delete">Delete List</button>
-    </form>
-    <br>
-    <a class="back" href="/users/<%= owned_list.user_id %>"><--- Back to my lists</a>
+
+            <% if @difference %>  
+                <% @difference.times do %>
+                    <li><input type="text" name="[list_items][][content]"></li>
+                <% end %>
+            <% end %>
+        
+        </ol>
+        <button class="edit" type="submit">Update</button>
+        </form>
+        <br>
+        <form action="/lists/<%=@list.id%>/delete" method="POST">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <label for="delete">Danger Zone:</label>
+            <button type="submit" class="delete">Delete List</button>
+        </form>
+        <br>
+        <a class="back" href="/users/<%= owned_list.user_id %>"><--- Back to my lists</a>
+ <% else %> 
+ <p>You can only edit your own lists</p>
+ <% end %>
