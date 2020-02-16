@@ -3,7 +3,9 @@
 
     <p class="details">
         authored by: <a href="/users/<%= list_owner.id %>"><%= list_owner.username %></a>
-        <%= "in category: #{@list.category}" if @list.category %>
+        <% if @list.category %>
+            in category: <a href="/categories/<%= @list.category.id %>"><%= @list.category.name %></a> 
+        <% end %>
     </p>
 
     <ol class="show-list">
