@@ -1,24 +1,23 @@
+add category index page to menu
+add dropdowns for individual categories in navbar?
+allow users to add links to list items and link those items
 move logic from Views into Controllers when possible
 add error messages with flash
 add error message to new List form (in case user forgets to include a title)
-
+seed more data
 add a view for list items that are ranked #1 by Category
+pagination
 
 When editing a list item, if we add attributes to list items then updating content of list item will break things
-add new item in new form on same edit page instead.
+could add new item in new form on same edit page instead.
 
-add seed data for testing
-
-Add model for Tags?
-Add view for view lists by tag
 
 test
 benchmark testing?
 figure out design
 add styling
-add readme
 add search function
-add more attributes to list items (links, images)?
+add more attributes to list items (images)?
 deploy to heroku
 
 add .env to gitignore?
