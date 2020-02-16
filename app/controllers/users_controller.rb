@@ -2,9 +2,13 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    @users = User.all
-    @users_by_username_asc = @users.sort_by { |user| user.username }
-    erb :"/users/index.html"
+    if logged_in?
+      @users = User.all
+      @users_by_username_asc = @users.sort_by { |user| user.username }
+      erb :"/users/index.html"
+    else
+      erb :error
+    end
   end
 
   # GET: /signup - Load Signup form
