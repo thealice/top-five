@@ -5,7 +5,15 @@
     <label for="title">List Title: </label>
         <input type="text" id="title" name="title" value="<%= @list.title %>"><br>
     <label for="category">List Category: </label>
-        <input type="text" id="category" name="category" value="<%= @list.category %>"><br>
+       <select id="category" name="category">
+			<% @categories.each do |category| %>
+				<% if category.id == @list.category.id %>
+					<option value="<%= category.name %>" selected ><%= category.name %></option>
+				<% else %>
+					<option value="<%= category.name %>"><%= category.name %></option>
+				<% end %>
+			<% end %>
+		</select><br>
     <br>
     <ol class="edit-list">
         <% @list_items.each.with_index do |item, index| %>
