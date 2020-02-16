@@ -2,4 +2,4 @@
 *.rbc
 *.sass-cache
 /Gemfile.lock
-db/seed.rb
+db/seeds.rb
