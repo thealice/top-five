@@ -83,6 +83,10 @@ h2 a {
   font-weight: 400;
 }
 
+h4 {
+  color: #ed12a8;
+}
+
 /*----- Nav Bar -----*/
 
 .navbar-light .navbar-brand span.pink {
