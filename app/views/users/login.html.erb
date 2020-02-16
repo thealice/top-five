@@ -1,6 +1,8 @@
 <h1>Log In</h1>
-
-<span class="error"><%= "Username and password do not match" if @user && @user.errors.any? %></span>
+<% if @error %>
+    <span class="error"><%= @error  %></span><br>
+    <span class="error">You can <a href="/signup">Sign Up</a> if you don't already have a username.</span>
+<% end %>
 
 <form action="/login" method="POST">
 

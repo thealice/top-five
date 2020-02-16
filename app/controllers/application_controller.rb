@@ -56,10 +56,8 @@ class ApplicationController < Sinatra::Base
       user = User.find_by(:username => username) 
  
       if user && user.authenticate(password)
-        session[:username] = user.username
-        session[:user_id] = user.id
-      else
-        redirect to '/login'
+        session[:username] = @user.username
+        session[:user_id] = @user.id
       end
       
     end

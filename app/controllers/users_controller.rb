@@ -39,9 +39,15 @@ class UsersController < ApplicationController
 
   # POST: /login - Log User In
   post "/login" do
-    login(params[:username], params[:password])
-    redirect to '/'
-    # redirect to "/users/#{current_user.id}"
+    @user = User.find_by(:username => params[:username])
+
+    if @user && @user.authenticate(params[:password])
+      session[:username] = @user.username
+      session[:user_id] = @user.id
+    else
+      @error = "Oops! Please check your login info and try again."
+      erb :"/users/login.html"
+    end
   end
 
   # GET: /logout - Log User Out
