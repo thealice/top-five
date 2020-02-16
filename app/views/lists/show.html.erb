@@ -4,7 +4,8 @@
     <p class="details">
         authored by: <a href="/users/<%= list_owner.id %>"><%= list_owner.username %></a>
         <% if @list.category %>
-            in category: <a href="/categories/<%= @list.category.id %>"><%= @list.category.name %></a> 
+            <br>
+            category: <a href="/categories/<%= @list.category.id %>"><%= @list.category.name %></a> 
         <% end %>
     </p>
 
