@@ -87,6 +87,11 @@ h4 {
   color: #ed12a8;
 }
 
+h5 span {
+  font-size: .9rem;
+  font-weight: 300;
+}
+
 /*----- Nav Bar -----*/
 
 .navbar-light .navbar-brand span.pink {

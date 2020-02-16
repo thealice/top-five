@@ -1,6 +1,6 @@
 <h1><%= "Categories" %> </h1>
     <ul class="index">
         <% @categories.each do |category| %>
-            <li><h5><a href="/categories/<%= category.id %>"><%= category.name %></a></h5></li>
+            <li><h5><a href="/categories/<%= category.id %>"><%= category.name %></a><span><%= " (#{category.lists.count})" if category.lists %></span></h5></li>
         <% end %>
     </ul>
