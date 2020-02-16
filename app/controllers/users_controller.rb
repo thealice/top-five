@@ -63,9 +63,13 @@ class UsersController < ApplicationController
 
   # GET: Display user info and a list of their lists
   get "/users/:id" do
-    @user = User.find_by(:id => params[:id])
-    @user_lists = @user.lists.sort_by {|list| list.title.downcase }
-    erb :"/users/show.html"
+    if logged_in?
+      @user = User.find_by(:id => params[:id])
+      @user_lists = @user.lists.sort_by {|list| list.title.downcase }
+      erb :"/users/show.html"
+    else
+      erb :error
+    end
   end
 
   # # GET: /users/5/edit - Users can only edit their own user page
