@@ -3,6 +3,8 @@
 <span class="error"><%= "Username and password are required fields" if @user && @user.errors.any? %></span>
 <span class="error"><%= "The username '#{@username_exists}' is already taken: <a href='/login'>Login</a>" if @username_exists %></span> 
 
+<hr>
+
 <form action="/signup" method="POST">
 
     <label for="username">Username: </label>

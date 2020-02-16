@@ -23,6 +23,10 @@ p.details {
   font-style: italic;
 }
 
+span.error {
+  font-size: .8em;
+}
+
 footer {
   margin-top: 1rem;
 }

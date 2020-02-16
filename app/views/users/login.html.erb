@@ -1,8 +1,13 @@
 <h1>Log In</h1>
+
 <% if @error %>
-    <span class="error"><%= @error  %></span><br>
-    <span class="error">You can <a href="/signup">Sign Up</a> if you don't already have a username.</span>
+    <span class="error">
+        <%= @error  %><br>
+        You can <a href="/signup">Sign Up</a> if you don't already have a username.
+     </span>
 <% end %>
+
+<hr>
 
 <form action="/login" method="POST">
 
