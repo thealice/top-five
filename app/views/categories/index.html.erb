@@ -1,1 +1,10 @@
-<h1>This is the Model's index page.</h1>
+<% if logged_in? %>
+    <h1><%= "Categories" %> </h1>
+    <ul class="categories">
+        <% @categories.each do |category| %>
+            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>You must be <a href="/login">logged in</a> to see all categories</p>
+<% end %>
