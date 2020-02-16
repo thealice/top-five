@@ -6,9 +6,10 @@ class CategoriesController < ApplicationController
     erb :"/categories/index.html"
   end
 
-  # # GET: /categories/5
-  # get "/categories/:id" do
-  #   erb :"/categories/show.html"
-  # end
+  # GET: /categories/5
+  get "/categories/:id" do
+    @category = Category.find_by(:id => params[:id])
+    erb :"/categories/show.html"
+  end
 
 end

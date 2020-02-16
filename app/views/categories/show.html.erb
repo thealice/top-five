@@ -1,1 +1,15 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Lists filed under: <%= @category.name %></h1>
+
+    <% if @category.lists.count >= 1 %>
+        <ul class="index">
+            <% @category.lists.each do |list| %>
+                <h5><li><a href="/lists/<%=list.id%>"><%= list.title %></a></li></h5>
+            <% end %>
+        </ul>
+    <% else %>
+        <p>
+            This catogory doesn't seem to have any lists yet.<br>
+            Why don't you add one? 
+         </p>
+        <button class="add" onclick="window.location.href = '/lists/new';">+ New List</button>
+    <% end %>
