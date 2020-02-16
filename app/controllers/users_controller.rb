@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:username] = @user.username
       session[:user_id] = @user.id
+      redirect to "/users/#{@user.id}"
     else
       @error = "Oops! Please check your login info and try again."
       erb :"/users/login.html"
