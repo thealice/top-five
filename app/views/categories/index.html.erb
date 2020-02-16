@@ -1,8 +1,8 @@
 <% if logged_in? %>
     <h1><%= "Categories" %> </h1>
-    <ul class="categories">
+    <ul class="index">
         <% @categories.each do |category| %>
-            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+            <li><h5><a href="/categories/<%= category.id %>"><%= category.name %></a></h5></li>
         <% end %>
     </ul>
 <% else %>
