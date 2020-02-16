@@ -54,6 +54,7 @@ class ListsController < ApplicationController
     if owns_list?
       @list = List.find_by(id: params[:id])
       @list_items = @list.list_items
+      @categories = Category.all.sort_by {|category| category.name.downcase}
       if @list_items.count < 10
         @difference = 5 - @list_items.count
       end
@@ -68,7 +69,7 @@ class ListsController < ApplicationController
     if owns_list? # Check to make sure this list belongs to logged in user
       @list = List.find_by(id: params[:id])
       # Update Title and/or Category
-      category = params[:category] 
+      category = Category.find_by(name: params[:category])
       @list.update(title: params[:title], category: category)
       # Update Existing List Items
       existing_items = @list.list_items
