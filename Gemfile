@@ -14,7 +14,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'bootstrap'
 
-group :test do
+group :development do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
