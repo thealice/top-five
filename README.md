@@ -37,5 +37,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Thanks to: 
 * [Allison Cortez](https://github.com/allisoncortez) for help with planning and moral support
+* Fellow Flatiron student [Adam Weissman](https://github.com/AdamWeissman) for his [Sinatra Pre-Project Resource Blog](https://adamweissman.github.io/the_sinatra_pre-project_resource_blog_standing_on_the_shoulders_of_giants)
 * My instructor, [Madeline Stark](https://github.com/Madeline-Stark)
 * and [Ego Trip's Book of Rap Lists](https://www.indiebound.org/book/9780312242985) for inspiration.
