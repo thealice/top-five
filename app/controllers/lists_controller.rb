@@ -21,18 +21,18 @@ class ListsController < ApplicationController
   post "/lists" do
     if logged_in?
       @list = List.new(title: params[:title])
-      @user = current_user
       if @list && @list.save
         @list.category = Category.find_by(:name => params[:category]) if params[:category] != "" #last part doesn't apply unless I change this back from a select list
         @list.user_id = current_user.id
         # Add new list items
-        params[:list_items].each_with_index do |item, index|
-          if item["content"] != ""
-            @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))
-          end
-        end
+        @list.create_list_item(params)
+        # params[:list_items].each_with_index do |item, index|
+        #   if item["content"] != ""
+        #     @list.list_items.create(:content => params["list_items"][index]["content"], :rank => (index + 1))
+        #   end
+        # end
         @list.save
-        @user.lists << @list
+        current_user.lists << @list
         redirect to "/lists/#{@list.id}"
       else
         erb :"/lists/new.html"
